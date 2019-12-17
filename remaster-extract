@@ -1,0 +1,77 @@
+#!/bin/bash
+
+## remaster-extract
+## Copyright (C) 2019 Richard Nelson <unixabg@gmail.com>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+############################
+# Dependencies
+############################
+if [[ $EUID -ne 0 ]]; then
+	echo "This script must be run as root"
+	exit 1
+fi
+
+if [ ! -e /usr/bin/rsync ]; then
+	echo "No /usr/bin/rsync file found!"
+	echo "Exiting ..."
+	echo "On Debian based systems, rsync can be installed with:"
+	echo "  apt install rsync"
+	exit 1
+fi
+
+# Source in config
+if [ ! -f remaster.conf ]; then
+	echo "No remaster.conf file found!"
+	echo "Exiting ..."
+	exit 1
+fi
+. remaster.conf
+
+############################
+# Main Code
+############################
+# Set some values for remaster
+_ISOSentry=0
+while [ -n "$1" ]; do # while loop starts
+	case "$1" in
+	-i | --iso)
+		shift
+		echo "--iso option was passed of $1"
+		_ISOName=$1
+		_ISOSentry=1
+		;;
+	--usage)
+		echo
+		echo "################## remaster-extract parameters ##################"
+		echo "  -i || --iso          - iso to use for extract operation"
+		echo
+		exit 0
+		;;
+	*) echo "Option $1 not recognized" ;; # In case you typed a different option other than a,b,c
+	esac
+	shift
+done
+
+if [ "$_ISOSentry" = "1" ]; then
+	echo "I: ISO was passed starting ..."
+	echo "I: Making iso mount point of ${_ISOMountPoint} "
+	mkdir -p $_ISOMountPoint
+	echo "I: Making iso extract path of ${_ISOExtractPath} "
+	mkdir -p $_ISOExtractPath
+	echo "I: Mounting iso on ${_ISOMountPoint} "
+	mount -o loop "${_ISOName}" ${_ISOMountPoint}
+	echo "I: Syncing ${_ISOMountPoint} to ${_ISOExtractPath} "
+	rsync -av ${_ISOMountPoint}/ ${_ISOExtractPath}/
+	echo "I: Unmounting iso ${_ISOMountPoint} "
+	umount -l ${_ISOMountPoint}
+	echo "I: ISO extract is completed"
+	echo "I: You should be ready to run remaster-squashfs-editor"
+else
+	echo "E: No ISO name was passed please see --usage."
+	exit
+fi
+
+exit 0

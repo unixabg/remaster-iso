@@ -1,0 +1,75 @@
+#!/bin/bash
+
+#set -x
+
+## remaster-compose
+## Copyright (C) 2019 Richard Nelson <unixabg@gmail.com>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+############################
+# Dependencies
+############################
+if [[ $EUID -ne 0 ]]; then
+	echo "This script must be run as root"
+	exit 1
+fi
+
+if [ ! -e /usr/bin/xorriso ]; then
+	echo "No /usr/bin/xorriso file found!"
+	echo "Exiting ..."
+	echo "On Debian based systems, xorriso can be installed with:"
+	echo "  apt install xorriso"
+	exit 1
+fi
+
+# Source in config
+if [ ! -f remaster.conf ]; then
+	echo "No remaster.conf file found!"
+	echo "Exiting ..."
+	exit 1
+fi
+. remaster.conf
+
+############################
+# Main Code
+############################
+# Set some values for remaster
+while [ -n "$1" ]; do # while loop starts
+	case "$1" in
+	-itn | --iso-target-name)
+		shift
+		echo "I: --iso-target-name option was passed of $1"
+		_ISOTargetName=$1
+		;;
+	-itt | --iso-target-title)
+		shift
+		echo "I: --iso-target-title was passed of $1"
+		_ISOTargetName=$1
+		;;
+	--usage)
+		echo
+		echo "################## remaster-compose parameters ##################"
+		echo "-itt || --iso-target-title      - set the target iso title"
+		echo "-itn || --iso-target-name       - set the target iso name "
+		echo "--usage                          - print this information  "
+		echo
+		exit 0
+		;;
+	*)
+		echo "E: Unrecognized option of $1 !!Stopping here!!"
+		exit 1
+		;;
+	esac
+	shift
+done
+
+echo "I: Attempting to compose the ISO: ${_ISOTargetName} ..."
+echo "I: change directory to target live folder"
+cd "${_ISOExtractPath}/${_ISOLivePath}"
+xorriso -as mkisofs -r -D -V "${_ISOTargetTitle}" -cache-inodes -J -l -isohybrid-mbr  /usr/lib/ISOLINUX/isohdpfx.bin -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o "${_BASEDIR}/${_ISOTargetName}" .
+
+echo "I: ... the ISO composition attempt is now complete."
+
+exit 0

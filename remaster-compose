@@ -67,7 +67,7 @@ done
 
 echo "I: Attempting to compose the ISO: ${_ISOTargetName} ..."
 echo "I: change directory to target live folder"
-cd "${_ISOExtractPath}/${_ISOLivePath}"
+cd "${_ISOExtractPath}"
 xorriso -as mkisofs -r -D -V "${_ISOTargetTitle}" -cache-inodes -J -l -isohybrid-mbr  /usr/lib/ISOLINUX/isohdpfx.bin -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o "${_BASEDIR}/${_ISOTargetName}" .
 
 echo "I: ... the ISO composition attempt is now complete."

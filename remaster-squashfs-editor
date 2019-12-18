@@ -174,7 +174,7 @@ then
 
 	_YESNO="${_YESNO:-${_DEFAULTYESNO}}"
 
-	if [ ${_YESNO} = "Y" ]
+	if [[ ${_YESNO} =~ ^[Yy]$ ]]
 	then
 		_DATE=$(date +%Y%m%d-%H%M%S)
 		echo "Now making the updated squashfs ${_DATE}."
@@ -222,7 +222,7 @@ then
 
 	_YESNO="${_YESNO:-${_DEFAULTYESNO}}"
 
-	if [ ${_YESNO} = "Y" ]
+	if [[ ${_YESNO} =~ ^[Yy]$ ]]
 	then
 		# Since we use sed to put text at the top of the file make sure the file exists.
 		if [ ! -e psu-changelog.txt ]
@@ -254,7 +254,7 @@ then
 	Cleanup_mounts
 
 	# Remove old directories and move old partials out.
-	if [ ${_YESNO} = "Y" ]
+	if [[ ${_YESNO} =~ ^[Yy]$ ]]
 	then
 		if [ ! -d "psu_overlay_rw-OLD-${_DATE}" ]; then
 			mkdir psu-OOS-${_DATE}

@@ -40,6 +40,13 @@ else
 	exit 1
 fi
 
+# Sanity check for work area
+if [ ! -d "${_ISOExtractPath}/${_ISOLivePath}" ]; then
+	echo "E: No iso-extract/live folder of ${_ISOExtractPath}/${_ISOLivePath} !"
+	echo "Exiting ..."
+	exit 1
+fi
+
 Cleanup_mounts () {
 	echo "Unmounting the areas we created."
 	for mount_point in "${_MOUNTLIST}"; do

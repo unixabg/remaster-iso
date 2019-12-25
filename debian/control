@@ -9,11 +9,13 @@ Vcs-Browser: https://github.com/unixabg/remaster-iso
 Vcs-Git: https://github.com/unixabg/remaster-iso.git
 
 Package: remaster-iso
-Architecture: any
+Architecture: all
 Depends:
   rsync,
   squashfs-tools,
   xorriso,
   ${misc:Depends},
-Description: Set of scripts to assist remastering an iso
- image with custom settings for debian based systems.
+Description: Set of scripts to extract an iso image, edit
+ the images filesystem.squashfs, and finaly compose the
+ changes back in iso format. Designed for remastering
+ Debian based iso images.

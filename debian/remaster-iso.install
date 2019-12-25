@@ -1,0 +1,4 @@
+remaster-compose		/usr/bin
+remaster-extract		/usr/bin
+remaster-iso.conf		/usr/share/remaster-iso
+remaster-squashfs-editor	/usr/bin

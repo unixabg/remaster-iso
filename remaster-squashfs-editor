@@ -97,7 +97,7 @@ do
 done
 
 echo "I: change directory to target live folder"
-cd ${_ISOExtractPath}/${_ISOLivePath}
+cd "${_ISOExtractPath}/${_ISOLivePath}"
 
 echo "I: strting mount list and points operations"
 # Let's start with mount list and mount points

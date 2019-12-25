@@ -25,12 +25,19 @@ if [ ! -e /usr/bin/xorriso ]; then
 fi
 
 # Source in config
-if [ ! -f remaster.conf ]; then
-	echo "No remaster.conf file found!"
+if [ -f remaster-iso.conf ]; then
+	echo "Found ./remaster-iso.conf"
+	echo "Sourcing in ./remaster-iso.conf"
+	. remaster-iso.conf
+elif [ -f /usr/share/remaster-iso/remaster-iso.conf ]; then
+	echo "Found /usr/share/remaster-iso/remaster-iso.conf"
+	echo "Sourcing in /usr/share/remaster-iso/remaster-iso.conf"
+	. /usr/share/remaster-iso/remaster-iso.conf
+else
+	echo "No remaster-iso.conf file found!"
 	echo "Exiting ..."
 	exit 1
 fi
-. remaster.conf
 
 ############################
 # Main Code

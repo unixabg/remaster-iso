@@ -25,6 +25,7 @@ if [ ! -e /usr/bin/mksquashfs ]; then
 fi
 
 # Source in config
+echo "Loading remaster-iso.conf ..."
 if [ -f remaster-iso.conf ]; then
 	echo "Found ./remaster-iso.conf"
 	echo "Sourcing in ./remaster-iso.conf"
@@ -53,6 +54,7 @@ show_menus() {
 	clear
 	echo "#################################"
 	echo "    remaster-squashfs-editor"
+	echo "    remaster-iso version ${_VER}"
 	echo "#################################"
 	echo "  (C)hroot - Chroot in to the filesystem.squashfs + psu-*.squashfs stack."
 	echo "  (J)oin   - Join the partial squashfs update files to new single psu-DATE.squashfs"

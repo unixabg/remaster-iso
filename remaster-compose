@@ -25,6 +25,7 @@ if [ ! -e /usr/bin/xorriso ]; then
 fi
 
 # Source in config
+echo "Loading remaster-iso.conf ..."
 if [ -f remaster-iso.conf ]; then
 	echo "Found ./remaster-iso.conf"
 	echo "Sourcing in ./remaster-iso.conf"
@@ -42,6 +43,8 @@ fi
 ############################
 # Main Code
 ############################
+echo "Conf says remaster-iso version is ${_VER}"
+
 # Set some values for remaster
 while [ -n "$1" ]; do # while loop starts
 	case "$1" in

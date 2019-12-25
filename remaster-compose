@@ -75,12 +75,19 @@ while [ -n "$1" ]; do # while loop starts
 	shift
 done
 
-_BUILDDATE=$(date +%Y%m%d%H%M)
-echo "I: Attempting to compose the ISO: ${_BUILDDATE}-${_ISOTargetName} ..."
-echo "I: change directory to target live folder"
-cd "${_ISOExtractPath}"
-xorriso -as mkisofs -r -D -V "${_ISOTargetTitle}" -cache-inodes -J -l -isohybrid-mbr  /usr/lib/ISOLINUX/isohdpfx.bin -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso" .
+if [ -d "${_ISOExtractPath}" ]; then
+	_BUILDDATE=$(date +%Y%m%d%H%M)
+	echo "I: Attempting to compose the ISO: ${_BUILDDATE}-${_ISOTargetName} ..."
+	echo "I: change directory to target live folder"
+	cd "${_ISOExtractPath}"
+	xorriso -as mkisofs -r -D -V "${_ISOTargetTitle}" -cache-inodes -J -l -isohybrid-mbr  /usr/lib/ISOLINUX/isohdpfx.bin -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso" .
 
-echo "I: ... ${_BUILDDATE}-${_ISOTargetName} ISO composition attempt is now complete."
+	echo "I: ... ${_BUILDDATE}-${_ISOTargetName} ISO composition attempt is now complete."
 
-exit 0
+	exit 0
+else
+	echo "E: No iso-extract folder of ${_ISOExtractPath} !"
+	echo "Exiting ..."
+	exit 1
+fi
+

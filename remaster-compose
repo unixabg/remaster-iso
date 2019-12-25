@@ -75,6 +75,7 @@ while [ -n "$1" ]; do # while loop starts
 	shift
 done
 
+# Sanity check for work area
 if [ -d "${_ISOExtractPath}" ]; then
 	_BUILDDATE=$(date +%Y%m%d%H%M)
 	echo "I: Attempting to compose the ISO: ${_BUILDDATE}-${_ISOTargetName} ..."

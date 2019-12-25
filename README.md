@@ -1,5 +1,5 @@
 # remaster-iso
-Set of scripts to assist remastering an iso image with custom settings for debian based systems.
+Set of scripts to assist remastering an iso image with custom settings for Debian based systems.
 
 ## Generic steps would be something like the following:
 

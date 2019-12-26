@@ -15,7 +15,6 @@ Depends:
   squashfs-tools,
   xorriso,
   ${misc:Depends},
-Description: Set of scripts to extract an iso image, edit
- the images filesystem.squashfs, and finally compose the
- changes back in iso format. Designed for remastering
- Debian based iso images.
+Description: Set of scripts to remaster Debian iso images.
+ Set of scripts to extract an iso image, edit the images
+ filesystem.squashfs, and finally compose the changes back in iso format.

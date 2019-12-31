@@ -81,10 +81,13 @@ if [ -d "${_ISOExtractPath}" ]; then
 	echo "I: Attempting to compose the ISO: ${_BUILDDATE}-${_ISOTargetName} ..."
 	echo "I: change directory to target live folder"
 	cd "${_ISOExtractPath}"
+	echo "I: creating a MD5SUMS file of iso contents"
+	find -type f -print0 | xargs -0 md5sum | grep -v isolinux/boot.cat | tee MD5SUMS
 	xorriso -as mkisofs -r -D -V "${_ISOTargetTitle}" -cache-inodes -J -l -isohybrid-mbr  /usr/lib/ISOLINUX/isohdpfx.bin -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso" .
 
 	echo "I: ... ${_BUILDDATE}-${_ISOTargetName} ISO composition attempt is now complete."
-
+	echo "I: Creating a MD5SUM of the completed iso file ..."
+	md5sum "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso" > "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso.md5sum"
 	exit 0
 else
 	echo "E: No iso-extract folder of ${_ISOExtractPath} !"

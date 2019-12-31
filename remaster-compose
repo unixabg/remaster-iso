@@ -88,6 +88,7 @@ if [ -d "${_ISOExtractPath}" ]; then
 	echo "I: ... ${_BUILDDATE}-${_ISOTargetName} ISO composition attempt is now complete."
 	echo "I: Creating a MD5SUM of the completed iso file ..."
 	md5sum "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso" > "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso.md5sum"
+	echo "I: ... iso MD5SUM completed."
 	exit 0
 else
 	echo "E: No iso-extract folder of ${_ISOExtractPath} !"

@@ -2,7 +2,8 @@ Source: remaster-iso
 Section: misc
 Priority: optional
 Maintainer: Richard Nelson <unixabg@gmail.com>
-Build-Depends: debhelper-compat (= 12)
+Build-Depends:
+ debhelper-compat (= 12),
 Standards-Version: 4.4.1
 Homepage: https://github.com/unixabg/remaster-iso
 Vcs-Browser: https://github.com/unixabg/remaster-iso
@@ -11,10 +12,10 @@ Vcs-Git: https://github.com/unixabg/remaster-iso.git
 Package: remaster-iso
 Architecture: all
 Depends:
-  rsync,
-  squashfs-tools,
-  xorriso,
-  ${misc:Depends},
+ rsync,
+ squashfs-tools,
+ xorriso,
+ ${misc:Depends},
 Description: Set of scripts to remaster Debian iso images.
  Set of scripts to extract an iso image, edit the images
  filesystem.squashfs, and finally compose the changes back in iso format.

@@ -1,3 +1,10 @@
+remaster-iso (0.9.2-2) unstable; urgency=medium
+
+  [ Richard Nelson ]
+  * Updating to standards version 4.5.0.
+
+ -- Richard Nelson <unixabg@gmail.com>  Fri, 14 Feb 2020 11:36:26 -0600
+
 remaster-iso (0.9.2-1) unstable; urgency=medium
 
   * Initial release

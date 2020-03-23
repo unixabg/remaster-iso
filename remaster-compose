@@ -71,7 +71,7 @@ while [ -n "$1" ]; do # while loop starts
 		echo "################## remaster-compose parameters ##################"
 		echo "-itt || --iso-target-title      - set the target iso title"
 		echo "-itn || --iso-target-name       - set the target iso name "
-		echo "--usage                          - print this information  "
+		echo "--usage                         - print this information  "
 		echo
 		exit 0
 		;;

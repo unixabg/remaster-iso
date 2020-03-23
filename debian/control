@@ -12,6 +12,7 @@ Vcs-Git: https://github.com/unixabg/remaster-iso.git
 Package: remaster-iso
 Architecture: all
 Depends:
+ isolinux,
  rsync,
  squashfs-tools,
  xorriso,

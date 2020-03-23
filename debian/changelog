@@ -1,3 +1,13 @@
+remaster-iso (0.9.3-1) unstable; urgency=medium
+
+  [ Richard Nelson ]
+  * Add isolinux as a dependency in debian/control (Closes: #954754).
+  * Add isolinux dependency check in remaster-compose.
+  * Bump version to 0.9.3 in remaster-iso.conf and debian manpages.
+  * Drop extra space in format of --usage output in remaster-compose.
+
+ -- Richard Nelson <unixabg@gmail.com>  Mon, 23 Mar 2020 13:53:32 -0500
+
 remaster-iso (0.9.2-2) unstable; urgency=medium
 
   [ Richard Nelson ]

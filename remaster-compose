@@ -16,6 +16,14 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+if [ ! -e /usr/lib/ISOLINUX/isohdpfx.bin ]; then
+	echo "No /usr/lib/ISOLINUX/isohdpfx.bin file found!"
+	echo "Exiting ..."
+	echo "On Debian based systems, isolinux can be installed with:"
+	echo "  apt install isolinux"
+	exit 1
+fi
+
 if [ ! -e /usr/bin/xorriso ]; then
 	echo "No /usr/bin/xorriso file found!"
 	echo "Exiting ..."

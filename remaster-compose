@@ -91,7 +91,7 @@ if [ -d "${_ISOExtractPath}" ]; then
 	cd "${_ISOExtractPath}"
 	echo "I: creating a MD5SUMS file of iso contents"
 	find -type f -print0 | xargs -0 md5sum | grep -v isolinux/boot.cat | tee MD5SUMS
-	xorriso -as mkisofs -r -D -V "${_ISOTargetTitle}" -cache-inodes -J -l -iso-level 3 -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin -c isolinux/boot.cat -b isolinux/isolinux.bin  -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat  -o "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso" .
+	xorriso -as mkisofs -r -D -V "${_ISOTargetTitle} ${_VER}" -cache-inodes -J -l -iso-level 3 -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin -c isolinux/boot.cat -b isolinux/isolinux.bin  -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat  -o "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso" .
 	echo "I: ... ${_BUILDDATE}-${_ISOTargetName} ISO composition attempt is now complete."
 	echo "I: Creating a MD5SUM of the completed iso file ..."
 	md5sum "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso" > "${_BASEDIR}/${_BUILDDATE}-${_ISOTargetName}.iso.md5sum"

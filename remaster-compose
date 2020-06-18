@@ -64,7 +64,7 @@ while [ -n "$1" ]; do # while loop starts
 	-itt | --iso-target-title)
 		shift
 		echo "I: --iso-target-title was passed of $1"
-		_ISOTargetName=$1
+		_ISOTargetTitle=$1
 		;;
 	--usage)
 		echo

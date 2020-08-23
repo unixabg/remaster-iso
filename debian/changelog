@@ -1,3 +1,18 @@
+remaster-iso (0.9.4-1) unstable; urgency=medium
+
+  [ Claudezilla ]
+  * Added further parameters to xorriso in remaster-compose
+
+  [ Richard Nelson ]
+  * Correct variable name for iso target title in remaster-compose.
+  * Add remaster-iso version to iso title in remaster-compose.
+  * Adjust version number in remaster-iso.conf.
+  * Update release info in
+    debian/manpage/remaster-(compose|extract|squashfs-editor).
+  * Adjusting debian/changelog for upload to mentors.
+
+ -- Richard Nelson <unixabg@gmail.com>  Sun, 23 Aug 2020 12:17:33 -0500
+
 remaster-iso (0.9.3-2) unstable; urgency=medium
 
   [ Debian Janitor ]

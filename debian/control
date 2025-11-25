@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Richard Nelson <unixabg@gmail.com>
 Build-Depends:
  debhelper-compat (= 12),
-Standards-Version: 4.5.0
+Standards-Version: 4.7.2
 Homepage: https://github.com/unixabg/remaster-iso
 Vcs-Browser: https://github.com/unixabg/remaster-iso
 Vcs-Git: https://github.com/unixabg/remaster-iso.git

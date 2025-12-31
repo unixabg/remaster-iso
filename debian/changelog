@@ -1,13 +1,13 @@
-remaster-iso (0.9.4-2) unstable; urgency=medium
+remaster-iso (0.9.5-1) unstable; urgency=medium
 
   [ Richard Nelson ]
   * Update copyright dates in remaster-(compose|extract|squashfs-editor).
   * Fix warning: cannot select font '\' in debian/manpages/remaster-compose.1
     and debian/manpages/remaster-extract.1.
   * Updating to standards version 4.7.2
-  * Adjusting debian/changelog for upload.
+  * Bump version in remaster-iso.conf.
 
- -- Richard Nelson <unixabg@gmail.com>  Wed, 31 Dec 2025 09:21:25 -0600
+ -- Richard Nelson <unixabg@gmail.com>  Wed, 31 Dec 2025 14:12:00 -0600
 
 remaster-iso (0.9.4-1) unstable; urgency=medium
 
